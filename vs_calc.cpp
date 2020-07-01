@@ -25,13 +25,13 @@ void xassert(bool trueCondition, const char *s1, const char *s2, const char *s3)
   }
 }
 
-void mvPtrFwd(const char *&src, const char *str) 
+void mvPtrFwd(const char *&src, const char *str)
 {
   while (haschar(str, *src))
     src++;
 }
 
-float getPow(float x, unsigned int n) 
+float getPow(float x, unsigned int n)
 {
   if (n == 0)
     return 1;
@@ -57,11 +57,11 @@ public:
 
   {
   }
-public:  
-  void syntaxCheck(bool trueCondition, 
-                  const char *errorText1, 
+public:
+  void syntaxCheck(bool trueCondition,
+                  const char *errorText1,
                   const char *errorText2,
-                  const char *errorText3) 
+                  const char *errorText3)
   {
     if (!trueCondition) {
       printf("Syntax error: %s%s%s in line %d at position %d\n", errorText1,
@@ -70,7 +70,7 @@ public:
     }
   }
 
-  bool isNeg(const char *&src) 
+  bool isNeg(const char *&src)
   {
     mvPtrFwd(src, separators);
     if (*src == '-') {
@@ -80,7 +80,7 @@ public:
     return false;
   }
 
-  float getNum() 
+  float getNum()
   {
     mvPtrFwd(curSrc, separators);
     float num = 0;
@@ -102,7 +102,7 @@ public:
     return num;
   }
 
-  float getArg() 
+  float getArg()
   {
     float res;
     mvPtrFwd(curSrc, separators);
@@ -134,7 +134,7 @@ public:
     return num1;
   }
 
-  float getMul() 
+  float getMul()
   {
     float num1 = getPower();
     for (;;) {
@@ -153,7 +153,7 @@ public:
     return num1;
   }
 
-  float getSum() 
+  float getSum()
   {
     bool neg = isNeg(curSrc);
     mvPtrFwd(curSrc, separators);
@@ -176,7 +176,7 @@ public:
     return num1;
   }
 
-   void getExpression() 
+   void getExpression()
   {
     mvPtrFwd(curSrc, separators);
     if (*curSrc != '"' && *curSrc != '\0') {
@@ -195,7 +195,7 @@ public:
 };
 
 
-int main() 
+int main()
 {
   setlocale(0, "Rus");
   FILE *fp = fopen(filename, "r");
